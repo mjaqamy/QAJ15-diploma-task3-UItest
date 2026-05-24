@@ -1,0 +1,25 @@
+{
+  "name": "qaj15-diploma-task3-uitest",
+  "version": "1.0.0",
+  "description": "testing web application (Task 3 diploma)",
+  "homepage": "https://github.com/mjaqamy/QAJ15-diploma-task3-UItest#readme",
+  "bugs": {
+    "url": "https://github.com/mjaqamy/QAJ15-diploma-task3-UItest/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjaqamy/QAJ15-diploma-task3-UItest.git"
+  },
+  "license": "ISC",
+  "author": "Yuliya Manko",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "tsx": "^4.22.3",
+    "typescript": "^6.0.3"
+  }
+}
