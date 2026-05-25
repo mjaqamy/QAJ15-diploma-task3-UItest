@@ -14,10 +14,16 @@
   "author": "Yuliya Manko",
   "type": "module",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "allure:reporter": "npx allure generate ./allure-results --clean",
+    "allure:open": "npx allure open ./allure-report"
+  },
   "devDependencies": {
     "@playwright/test": "^1.60.0",
     "@types/node": "^25.9.1",
+    "allure": "^3.8.2",
+    "allure-commandline": "^2.41.0",
+    "allure-playwright": "^3.9.0",
     "dotenv": "^17.4.2",
     "tsx": "^4.22.3",
     "typescript": "^6.0.3"
