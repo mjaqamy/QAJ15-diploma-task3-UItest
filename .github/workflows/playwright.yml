@@ -1,12 +1,13 @@
 name: Playwright UI Tests
 
 on:
+  push:
+    branches: [ main, master ] 
   pull_request:
     branches: [ main, master ] # Запуск тестов при создании MR в main или master
 
 jobs:
   test:
-    timeout-minutes: 60
     runs-on: ubuntu-latest
 
     steps:
