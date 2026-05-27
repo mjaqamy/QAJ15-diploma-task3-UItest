@@ -26,7 +26,10 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
 
-    - name: Run Playwright tests
+    - name: Run Playwright 
+      env:
+        TEST_EMAIL: ${{ secrets.ENV_EMAIL }}
+        TEST_PASSWORD: ${{ secrets.ENV_PASSWORD }}
       run: npx playwright test --project=chromium
 
     - name: Generate Allure Report
