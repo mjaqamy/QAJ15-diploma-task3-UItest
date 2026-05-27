@@ -7,11 +7,12 @@ export class HomePage extends BasePage {
   readonly searchSubmitBtn: Locator;
   readonly searchNoResult: Locator;
   readonly searchResetBtn: Locator;
-  readonly firstProductTitle: Locator;
+  readonly firstProductName: Locator;
   readonly categoriesButton: Locator;
   readonly cartButton: Locator;
   readonly sortSelect: Locator;
-  readonly FirstProductLink: Locator;
+  readonly firstProductLink: Locator;
+  readonly secondProductLink: Locator;
   readonly compareBtnFirst: Locator;
   readonly compareBtnSecond: Locator;
   readonly comparisonBar: Locator;
@@ -21,6 +22,7 @@ export class HomePage extends BasePage {
   readonly categoryPowerToolsCheckbox: Locator;
   readonly pageNumTwoBtn: Locator;
   readonly priceRangePointMin: Locator;
+  readonly addToCartBtn: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -28,12 +30,13 @@ export class HomePage extends BasePage {
     this.searchSubmitBtn = page.locator('[data-test="search-submit"]');
     this.searchResultsHeader = page.locator('[data-test="search-caption"]');
     this.searchNoResult = page.locator('[data-test="no-results"]');
-    this.firstProductTitle = page.locator('.card-title').first();
+    this.firstProductName = page.locator('[data-test="product-name"]').first();
     this.categoriesButton = page.getByText('Categories');
     this.cartButton = page.locator('[data-test="nav-cart"]');
     this.searchResetBtn = page.locator('[data-test="search-reset"]');
     this.sortSelect = page.locator('[data-test="sort"]');
-    this.FirstProductLink = page.locator('a[href*="/product/"]').first();
+    this.firstProductLink = page.locator('a[href*="/product/"]').first();
+    this.secondProductLink = page.locator('a[href*="/product/"]').nth(1);
     this.compareBtnFirst = page.locator('[data-test="compare-btn"]').first();
     this.compareBtnSecond = page.locator('[data-test="compare-btn"]').nth(1);
     this.comparisonBar = page.locator('[data-test="comparison-bar"]');
@@ -43,6 +46,7 @@ export class HomePage extends BasePage {
     this.pageNumTwoBtn = page.getByLabel('Page-2');
     this.categoryPowerToolsCheckbox = page.getByRole('checkbox', { name: 'Power Tools' });
     this.priceRangePointMin = page.locator('.ngx-slider-pointer-min');
+    this.addToCartBtn = page.locator('[data-test="add-to-cart"]');
   }
 
   async openHomePage() {
@@ -54,7 +58,7 @@ export class HomePage extends BasePage {
   }
 
   async openFirstProduct() {
-    await this.FirstProductLink.click();
+    await this.firstProductLink.click();
   }
 
   async openCart() {

@@ -15,8 +15,8 @@ export class LoginPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.emailInput = page.locator('#email');
-    this.passwordInput = page.locator('#password');
+    this.emailInput = page.locator('[data-test="email"]');
+    this.passwordInput = page.locator('[data-test="password"]');
     this.loginButton = page.locator('input[value="Login"]');
     this.errorMessage = page.locator('.alert-danger');
     this.emailRequiredMessage = page.locator('[data-test="email-error"]');

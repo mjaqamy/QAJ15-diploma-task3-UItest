@@ -17,7 +17,7 @@ test.describe('Home Page Tests', () => {
     await homePage.searchInput.fill(productForSearch);
     await homePage.searchSubmitBtn.click();
     await expect(homePage.searchResultsHeader).toHaveText(`Searched for: ${productForSearch}`);
-    await expect(homePage.firstProductTitle).toHaveText(productForSearch);
+    await expect(homePage.firstProductName).toHaveText(productForSearch);
   });
 
   test('Поиск несуществующего товара', async () => {
@@ -35,19 +35,19 @@ test.describe('Home Page Tests', () => {
   test('Сортировка товаров по имени от А до Я', async () => {
     await homePage.sortSelect.selectOption('name,asc');
     await expect(homePage.sortSelect).toHaveValue('name,asc');
-    await expect(homePage.firstProductTitle.first()).toHaveText('Adjustable Wrench');
+    await expect(homePage.firstProductName.first()).toHaveText('Adjustable Wrench');
   });
 
   test('Выбор категории фильтра Power Tools', async () => {
-    const firstProductBeforeFilter = await homePage.firstProductTitle.textContent();
+    const firstProductBeforeFilter = await homePage.firstProductName.textContent();
     await homePage.categoryPowerToolsCheckbox.check();
     await expect(homePage.categoryPowerToolsCheckbox).toBeChecked();
-    await expect(homePage.firstProductTitle).toBeVisible();
-    await expect(homePage.firstProductTitle).not.toHaveText(firstProductBeforeFilter || '');
+    await expect(homePage.firstProductName).toBeVisible();
+    await expect(homePage.firstProductName).not.toHaveText(firstProductBeforeFilter || '');
   });
 
   test('Фильтрация товаров по Price Range', async () => {
-    const firstProductBeforeFilter = await homePage.firstProductTitle.textContent();
+    const firstProductBeforeFilter = await homePage.firstProductName.textContent();
     const startValue = await homePage.priceRangePointMin.getAttribute('aria-valuenow');
     await homePage.priceRangePointMin.click();
     await homePage.priceRangePointMin.press('PageUp');
@@ -55,32 +55,32 @@ test.describe('Home Page Tests', () => {
       'aria-valuenow',
       startValue || '0',
     );
-    await expect(homePage.firstProductTitle).toBeVisible();
-    await expect(homePage.firstProductTitle).not.toHaveText(firstProductBeforeFilter || '');
+    await expect(homePage.firstProductName).toBeVisible();
+    await expect(homePage.firstProductName).not.toHaveText(firstProductBeforeFilter || '');
   });
 
   test('Переход на вторую страницу по клику на цифру 2', async () => {
-    const firstProductOnFirstPage = await homePage.firstProductTitle.textContent();
+    const firstProductOnFirstPage = await homePage.firstProductName.textContent();
     await homePage.pageNumTwoBtn.click();
-    await expect(homePage.firstProductTitle).toBeVisible();
-    await expect(homePage.firstProductTitle).not.toHaveText(firstProductOnFirstPage || '');
+    await expect(homePage.firstProductName).toBeVisible();
+    await expect(homePage.firstProductName).not.toHaveText(firstProductOnFirstPage || '');
   });
 
   test('Переключение на следующую страницу через пагинацию', async () => {
-    const firstProductOnFirstPage = await homePage.firstProductTitle.textContent();
+    const firstProductOnFirstPage = await homePage.firstProductName.textContent();
     await homePage.paginationNext.click();
-    await expect(homePage.firstProductTitle).toBeVisible();
-    await expect(homePage.firstProductTitle).not.toHaveText(firstProductOnFirstPage || '');
+    await expect(homePage.firstProductName).toBeVisible();
+    await expect(homePage.firstProductName).not.toHaveText(firstProductOnFirstPage || '');
     await expect(homePage.paginationPrevious).not.toHaveAttribute('class', /disabled/);
   });
 
   test('Возврат на первую страницу каталога кнопкой Previous', async () => {
     await homePage.paginationNext.click();
-    await expect(homePage.firstProductTitle).toBeVisible();
-    const firstProductOnSecondPage = await homePage.firstProductTitle.textContent();
+    await expect(homePage.firstProductName).toBeVisible();
+    const firstProductOnSecondPage = await homePage.firstProductName.textContent();
     await homePage.paginationPrevious.click();
-    await expect(homePage.firstProductTitle).toBeVisible();
-    await expect(homePage.firstProductTitle).not.toHaveText(firstProductOnSecondPage || '');
+    await expect(homePage.firstProductName).toBeVisible();
+    await expect(homePage.firstProductName).not.toHaveText(firstProductOnSecondPage || '');
     await expect(homePage.paginationPrevious).toHaveAttribute('class', /disabled/);
   });
 
