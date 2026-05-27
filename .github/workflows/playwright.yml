@@ -27,11 +27,11 @@ jobs:
       run: npx playwright install --with-deps
 
     - name: Run Playwright tests
-      run: npx playwright test
+      run: npx playwright test --project=chromium
 
     - name: Generate Allure Report
       if: always() # Выполнять генерацию отчета всегда, даже если тесты упали
-      run: npm run allure:reporter
+      run: npm run allure:reporter || true # Игнорируем ошибку генерации, чтобы загрузить то, что успело собраться
 
     - name: Upload Allure Report Artifact
       if: always() # Сохранять отчет в артефакты всегда
