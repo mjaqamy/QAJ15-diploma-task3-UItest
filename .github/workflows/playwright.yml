@@ -28,8 +28,8 @@ jobs:
 
     - name: Run Playwright 
       env:
-        TEST_EMAIL: ${{ secrets.ENV_EMAIL }}
-        TEST_PASSWORD: ${{ secrets.ENV_PASSWORD }}
+        TEST_EMAIL: ${{ secrets.TEST_EMAIL }}
+        TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
       run: npx playwright test --project=chromium
 
     - name: Generate Allure Report
